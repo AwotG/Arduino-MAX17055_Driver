@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map For MAX17055-Arduino-Library
+#######################################
+
+#######################################
+# Class (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+getInstantaneousCurrent	KEYWORD2
+getInstantaneousVoltage	KEYWORD2
+setCapacity	KEYWORD2
+getCapacity	KEYWORD2
+setResistSensor	KEYWORD2
+getResistSensor	KEYWORD2
+getSOC	KEYWORD2
+getTimeToEmpty	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
