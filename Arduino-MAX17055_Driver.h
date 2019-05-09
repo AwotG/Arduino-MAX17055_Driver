@@ -52,7 +52,7 @@
 * in a tiny, lead-free 0.4mm pitch 1.4mm x 1.5mm, 9-pin WLP package, and a 2mm x 2.5mm, 10-pin 
 * TDFN package.
 *
-* Ressources can be found at
+* Resources can be found at
 * https://www.maximintegrated.com/en/products/power/battery-management/MAX17055.html
 * https://www.maximintegrated.com/en/app-notes/index.mvp/id/6365
 * https://www.maximintegrated.com/en/app-notes/index.mvp/id/6358
@@ -82,7 +82,7 @@ class MAX17055
     
     //methods
     MAX17055(void); //Constructor prototype
-    MAX17055(uint16_t batteryCapacity); //Constuctor allowing user to set capacity of battery
+    MAX17055(uint16_t batteryCapacity); //Constructor allowing user to set capacity of battery
     
     float getInstantaneousCurrent();
     float getInstantaneousVoltage();
