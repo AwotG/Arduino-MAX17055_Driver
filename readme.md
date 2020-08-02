@@ -60,11 +60,11 @@ LV4 (LLC)|LV4 (LLC)
 
 `float instantaneousCurrent();`
 **Return type represents: mA**
-Gives the amount of current being used by the battery in that moment. If implementing this to continously get readings, consider a reasonable delay time (i.e 0.5 seconds)
+Gives the amount of current being used by the battery in that moment. If implementing this to continuously get readings, consider a reasonable delay time (i.e 0.5 seconds)
 
 `float instantaneousVoltage();`
 **Return type represents: V**
-Gives the current Voltage of the plugged in battery. If implementing this to continously get readings, consider a reasonable delay time (i.e 0.5 seconds)
+Gives the current Voltage of the plugged in battery. If implementing this to continuously get readings, consider a reasonable delay time (i.e 0.5 seconds)
 
 `void  setCapacity(uint16_t batteryCapacity);`
 **No return type.** 
@@ -82,7 +82,7 @@ Resist sensor is important in calculating the voltage and current (aong with all
 
 `float getResistSensor();` 
 **Return type represents: ohms**
-Resist sensor is important in calculating the voltage and current (aong with all other stats tied to it). By deafult, the MAX17055 chip has an internal 0.01 ohm resistor, which this library has set to.
+Resist sensor is important in calculating the voltage and current (aong with all other stats tied to it). By default, the MAX17055 chip has an internal 0.01 ohm resistor, which this library has set to.
 
 `float getSOC();` 
 **Return type represents: Percentage**
@@ -90,7 +90,7 @@ Get the current State of Charge of the battery. This is the percentage of power 
 
 `float timeToEmpty();`
 **Return type represents: Hours**
-Estimated time before battery reachs empty capacity. This is given in Hours
+Estimated time before battery reaches empty capacity. This is given in Hours
 
 ## Example Code
 Before running the code, make sure that everything is wired up (follow pinouts above).
