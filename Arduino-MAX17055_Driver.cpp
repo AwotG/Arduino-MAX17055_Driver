@@ -70,6 +70,25 @@ MAX17055::MAX17055(uint16_t batteryCapacity)
 	writeReg16Bit(DesignCap, batteryCapacity*2);
 }
 // Public Methods
+bool MAX17055::init()
+{
+    Wire.beginTransmission(I2CAddress);
+    byte error = Wire.endTransmission();
+    if (error == 0) //Device Acknowledged
+    {
+        bool POR = readReg16Bit(Status)&0x0002;
+        if (POR)
+        {
+            setCapacity(2600); //default values
+            setResistSensor(0.01);  //default values
+            //TODO: load configs as needed
+            writeReg16Bit(Status,readReg16Bit(Status)&0xFFFD); //reset POR Status
+        }
+        return true;
+    }
+    return false; //device not found
+}
+
 void MAX17055::setCapacity(uint16_t batteryCapacity)
 {
 	//calcuation based on AN6358 page 13 figure 1.3 for Capacity, but reversed to get the register value 
@@ -93,7 +112,13 @@ float MAX17055::getResistSensor()
 	return resistSensor;
 }
 
-float MAX17055::getInstantaneousCurrent()
+float MAX17055::getAverageCurrent() //-ve current is charging, +ve is discharging
+{
+   	int16_t current_raw = readReg16Bit(AvgCurrent);
+	return current_raw * current_multiplier_mV;
+}
+
+float MAX17055::getInstantaneousCurrent() //-ve current is charging, +ve is discharging
 {
    	int16_t current_raw = readReg16Bit(Current);
 	return current_raw * current_multiplier_mV;
@@ -115,6 +140,21 @@ float MAX17055::getTimeToEmpty()
 {
 	uint16_t TTE_raw = readReg16Bit(TimeToEmpty);
 	return TTE_raw * time_multiplier_Hours;
+}
+
+float MAX17055::getTemperature() {
+    uint16_t temp_raw= readReg16Bit(Temperature);
+    return temp_raw * percentage_multiplier;
+}
+
+float MAX17055::getAge() {
+    uint16_t age_raw= readReg16Bit(Age);
+    return age_raw * percentage_multiplier ; //Return value is % age, with 100% being a fully healthy, new battery.
+}
+
+bool MAX17055::getPresent() { //TODO: Doesn't seem to detect battery removal/re-insertion
+    uint16_t pres_raw= readReg16Bit(Status) & 8; //returns just the 4th bit, with 0 = battery present, 1 = battery missing
+    return !pres_raw; //hence we invert to return true if battery is present
 }
 
 // Private Methods

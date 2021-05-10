@@ -5,19 +5,23 @@
 #######################################
 # Class (KEYWORD1)
 #######################################
+MAX17055		KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-
+getAverageCurrent	KEYWORD2
 getInstantaneousCurrent	KEYWORD2
 getInstantaneousVoltage	KEYWORD2
-setCapacity	KEYWORD2
-getCapacity	KEYWORD2
-setResistSensor	KEYWORD2
-getResistSensor	KEYWORD2
-getSOC	KEYWORD2
-getTimeToEmpty	KEYWORD2
+setCapacity		KEYWORD2
+getCapacity		KEYWORD2
+setResistSensor		KEYWORD2
+getResistSensor		KEYWORD2
+getSOC			KEYWORD2
+getTimeToEmpty		KEYWORD2
+getTemperature  	KEYWORD2
+getAge			KEYWORD2
+getPresent		KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
