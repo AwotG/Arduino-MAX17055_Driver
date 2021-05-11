@@ -112,13 +112,13 @@ float MAX17055::getResistSensor()
 	return resistSensor;
 }
 
-float MAX17055::getAverageCurrent() //-ve current is charging, +ve is discharging
+float MAX17055::getAverageCurrent() //+ve current is charging, -ve is discharging
 {
    	int16_t current_raw = readReg16Bit(AvgCurrent);
 	return current_raw * current_multiplier_mV;
 }
 
-float MAX17055::getInstantaneousCurrent() //-ve current is charging, +ve is discharging
+float MAX17055::getInstantaneousCurrent() //+ve current is charging, -ve is discharging
 {
    	int16_t current_raw = readReg16Bit(Current);
 	return current_raw * current_multiplier_mV;
