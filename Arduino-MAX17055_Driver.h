@@ -61,6 +61,7 @@
 // Currently, code only displays register values in hexadecimal format. User needs to state which register they're addressing by hand
 // in the ino file.
 
+
 class MAX17055
 {
   public:
@@ -68,6 +69,8 @@ class MAX17055
     enum regAddr
     {
       Status      = 0x00, //Maintains all flags related to alert thresholds and battery insertion or removal.
+      Age         = 0x07, //calculated percentage value of capacity compared to original design capacity.
+      Temperature = 0x08, //Temperature of MAX17055 chip
       VCell       = 0x09, //VCell reports the voltage measured between BATT and CSP.
       AvgVCell    = 0x19, //The AvgVCell register reports an average of the VCell register readings. 
       Current     = 0x0A, //Voltage between the CSP and CSN pins, and would need to convert to current
@@ -84,6 +87,8 @@ class MAX17055
     MAX17055(void); //Constructor prototype
     MAX17055(uint16_t batteryCapacity); //Constructor allowing user to set capacity of battery
     
+    bool  init();
+    float getAverageCurrent();
     float getInstantaneousCurrent();
     float getInstantaneousVoltage();
     void  setCapacity(uint16_t batteryCapacity);
@@ -92,6 +97,9 @@ class MAX17055
     float getResistSensor(); 
     float getSOC(); //SOC = State of Charge 
     float getTimeToEmpty();
+    float getTemperature();
+    float getAge();
+    bool  getPresent();
 
 private:
     //variables
